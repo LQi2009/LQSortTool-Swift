@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let strs = ["张三", "李四", "范冰冰", "赵丽颖", "花千骨", "李白", "范伟", "张三丰", "micle", "单雄信", "解晓东", "单冰冰", "查坤", "朴槿惠"]
+        let strs = ["张三", "李四", "范冰冰", "赵丽颖", "花千骨", "李白", "范伟", "张三丰", "micle", "单雄信", "解晓东", "单冰冰", "查坤", "朴槿惠", "123", "[[].."]
         
         let result = LQSortTool.sort(strs, ascending: true)
         
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         }
         let rs = LQSortTool.sortObjs(peoples, ascending: true)
         print(rs)
+        
         for pe in rs {
             for peop in pe.value {
                 print("\(pe.key)--\(peop.name)--\(peop.age)")

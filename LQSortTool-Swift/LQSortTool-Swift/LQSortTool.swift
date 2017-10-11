@@ -36,7 +36,19 @@ class LQSortTool {
             CFStringTransform(mutableString, nil, kCFStringTransformToLatin, false)
             CFStringTransform(mutableString, nil, kCFStringTransformStripDiacritics, false)
             let string = String(mutableString)
-            return String(string.uppercased().first!)
+            if let c = string.uppercased().first {
+                let firstStr = String(c)
+                
+                let regex = "[a-zA-Z]*"
+                let pred = NSPredicate(format: "SELF MATCHES %@", regex)
+                if pred.evaluate(with: firstStr) {
+                    return firstStr
+                }
+                
+                return "#"
+            }
+            
+            return string
         }
         
         let sort = group.sorted { (key1, key2) -> Bool in
@@ -67,8 +79,22 @@ class LQSortTool {
             CFStringTransform(mutableString, nil, kCFStringTransformToLatin, false)
             CFStringTransform(mutableString, nil, kCFStringTransformStripDiacritics, false)
             let string = String(mutableString)
-            return String(string.uppercased().first!)
+            
+            if let c = string.uppercased().first {
+                let firstStr = String(c)
+                
+                let regex = "[a-zA-Z]*"
+                let pred = NSPredicate(format: "SELF MATCHES %@", regex)
+                if pred.evaluate(with: firstStr) {
+                    return firstStr
+                }
+                
+                return "#"
+            }
+            
+            return string
         }
+        
         // 分组后进行排序
         let sort = group.sorted { (key1, key2) -> Bool in
             if ascending {
@@ -81,13 +107,14 @@ class LQSortTool {
     }
 }
 // 校验多音字
-func checkPolyphone(_ string: String) -> String? {
+private func checkPolyphone(_ string: String) -> String? {
     
     guard let c = string.first else {
         return nil
     }
     
     let tmp = String(c)
+    
     switch tmp {
     case "解":
         return "X"
