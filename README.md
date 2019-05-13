@@ -1,6 +1,6 @@
 # LQSortTool-Swift
 
-### Objective-C 版本: [LDSortTool](https://github.com/LQi2009/LDSortTool)
+### Objective-C 版本: [LDSortTool](https://github.com/LQi2009/LQSortTool)
 
 Swift4.0 版本的分组排序工具, 可对字符串和实例对象进行排序
 
